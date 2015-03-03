@@ -1,9 +1,13 @@
 from subprocess import call
 from azure.storage import BlobService
 import time
+import ConfigParser
 
-accountName = ""
-accountKey = ""
+config = ConfigParser.ConfigParser()
+config.read('config.ini')
+
+accountName = config.get('Storage', 'AccountName')
+accountKey = config.get('Storage', 'AccountKey')
 
 blob_service = BlobService(account_name=accountName, account_key=accountKey)
 

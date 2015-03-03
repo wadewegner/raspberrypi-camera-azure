@@ -1,11 +1,15 @@
 from azure.storage import BlobService
 import picamera
 import time
+import ConfigParser
+
+config = ConfigParser.ConfigParser()
+config.read('config.ini')
+
+accountName = config.get('Storage', 'AccountName')
+accountKey = config.get('Storage', 'AccountKey')
 
 camera = picamera.PiCamera()
-
-accountName = ""
-accountKey = ""
 
 ticks = time.time()
 imageName = str(ticks) + '.jpg'

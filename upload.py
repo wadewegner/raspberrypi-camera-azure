@@ -1,8 +1,13 @@
 import sys
+import os
+import ConfigParser
 from azure.storage import BlobService
 
-accountName = ""
-accountKey = ""
+config = ConfigParser.ConfigParser()
+config.read('config.ini')
+
+accountName = config.get('Storage', 'AccountName')
+accountKey = config.get('Storage', 'AccountKey')
 
 fileName = sys.argv[1]
 type = sys.argv[2]
